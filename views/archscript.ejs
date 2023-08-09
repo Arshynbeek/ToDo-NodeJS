@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("components/head.ejs")%>
+    
+    <title>ToDo</title>
+  </head>
+
+  <body>
+
+    <div class="container mt-3">
+      <h2>To Do</h2>
+      <a href="/new"><button class="btn btn-primary mb-3">Create new task</button></a>
+
+      <ol class="list-group list-group-numbered">
+
+        <%
+          data.forEach(i => {
+        %>
+
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+          <div class="ms-2 me-auto">
+            <div class="fw-bold"><%= i.title %></div>
+            <%= i.description %>
+          </div>
+          <div>
+            <a href="/edit/<%= i._id %>"><button class="btn btn-warning">Edit</button></a>
+            <button class="btn btn-danger" onclick="deleteItem('<%= i._id %>')">Delete</button>
+          </div>
+        </li>
+
+        <%
+          });
+        %>
+      </ol>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js" 
+      integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ==" 
+      crossorigin="anonymous" 
+      referrerpolicy="no-referrer"></script>
+
+    <script src="/js/delete.js"></script>
+    
+  </body>
+</html>

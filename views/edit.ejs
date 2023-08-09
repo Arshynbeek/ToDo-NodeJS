@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("components/head.ejs")%>
+
+    <title>Edit</title>
+  </head>
+
+  <body>
+
+    <div class="container mt-3">
+      <a href="/"><button class="btn btn-secondary mb-3">Go Back</button></a>
+      <h2>Edit task</h2>
+
+      <form action="/edit", method="POST">
+        <input type="hidden" name="id" value="<%= data._id %>">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Name of task</label>
+          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Name of task" value="<%= data.title %>" name="title">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">Task description</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"><%= data.description %></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Save</button>
+      </form>
+    </div>
+    
+  </body>
+</html>
